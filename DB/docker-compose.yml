@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: nest_tcit
+      POSTGRES_PASSWORD: tcit
+      POSTGRES_DB: tcit_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend_net
+
+volumes:
+  postgres_data:
+
+networks:
+  backend_net:
+    driver: bridge
