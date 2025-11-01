@@ -1,0 +1,19 @@
+{
+  "name": "tcit_examen_tecnico",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:front": "npm run dev --prefix front",
+    "start:back": "npm run start:dev --prefix back",
+    "start:all": "concurrently \"npm run start:back\" \"npm run start:front\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotMoar/TCIC_examen_tecnico.git"
+  },
+  "license": "ISC"
+}
