@@ -1,55 +1,29 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchPosts } from "./thunk";
+import { ReduxPostStateManage } from "../../types/reduxManage";
 import { initialState } from "./initialState";
-import { createPost, deletePostAction } from "./thunk";
-import { ApiError } from "../../types/apiResponse";
 
 export const postSlice = createSlice({
-	name: "posts",
-	initialState: initialState,
-	reducers: {},
-	extraReducers: (builder) => {
-		builder.addCase(createPost.rejected, (state, action) => {
-			state.error = true;
-			state.loading = false;
-			const apiError = action.payload as ApiError | undefined;
-			state.message = apiError?.message || action.error.message || "Error desconocido";
-		});
-
-		builder.addCase(createPost.pending, (state, action) => {
-			state.loading = true;
-			state.error = false;
-			state.message = "Creando post...";
-
-			// 👇 Aquí puedes acceder al objeto que estás enviando al thunk
-			const newPost = action.meta.arg;
-			state.data = [
-				...state.data,
-				{
-					...newPost,
-					id: "temp-" + crypto.randomUUID(),
-				},
-			];
-
-		});
-
-		builder.addCase(deletePostAction.pending, (state, action) => {
-			state.loading = true;
-			state.error = false;
-			state.message = "";
-
-			const idToDelete = action.meta.arg;
-
-			state.data = state.data.filter((post) => post.id !== idToDelete)
-		});
-
-		builder.addCase(deletePostAction.rejected, (state, action) => {
-			state.loading = false;
-			state.error = true;
-			state.message = action.error.message || "Error desconocido";
-
-		});
-	},
+  name: "posts",
+  initialState: initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchPosts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchPosts.fulfilled, (state, action: PayloadAction<any>) => {
+        state.loading = false;
+        state.items = action.payload.data; // 👈 los posts
+        state.total = action.payload.total;
+        state.totalPages = action.payload.totalPages;
+      })
+      .addCase(fetchPosts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      });
+  },
 });
 
-export const { } = postSlice.actions;
 export default postSlice.reducer;

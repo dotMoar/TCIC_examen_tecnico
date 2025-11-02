@@ -1,33 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Post } from "../../types/post";
-import { fetchHandler } from "../../utils/fetchHelper";
-import { ApiError } from "../../types/apiResponse";
+import { PostsService } from "../../api";
+import { FetchPostsParams } from "../../types/fetchPostPaginateParams";
 
-const API_URL = "http://localhost:3000/posts";
+export const fetchPosts = createAsyncThunk(
+  "posts/fetchAll",
+  async (params: FetchPostsParams = { page: 1, limit: 10 }, { rejectWithValue }) => {
+    try {
+      const response = await PostsService.postsControllerFindAll(
+        params.authorId,
+        params.limit,
+        params.page
+      );
 
-export const fetchPosts = createAsyncThunk("posts/fetchAll", async (_, { rejectWithValue }) => {
-    const res = await fetchHandler.get<Post[]>("/posts");
-    if (!res.ok) return rejectWithValue(res.error);
-    return res.data!;
-});
-
-export const createPost = createAsyncThunk<Post, Post, { rejectValue: ApiError }>(
-    "posts/create",
-    async (newPost, { rejectWithValue }) => {
-        const res = await fetchHandler.post<Post>("/posts", newPost);
-        if (!res.ok) return rejectWithValue(res.error!);
-        return res.data!;
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.message || "Error al obtener los posts");
     }
+  }
 );
-
-export const updatePost = createAsyncThunk("posts/update", async (updated: Post, { rejectWithValue }) => {
-    const res = await fetchHandler.put<Post>(`/posts/${updated.id}`, updated);
-    if (!res.ok) return rejectWithValue(res.error);
-    return res.data!;
-});
-
-export const deletePostAction = createAsyncThunk("posts/delete", async (id: string, { rejectWithValue }) => {
-    const res = await fetchHandler.delete(`/posts/${id}`);
-    if (!res.ok) return rejectWithValue(res.error);
-    return id;
-});

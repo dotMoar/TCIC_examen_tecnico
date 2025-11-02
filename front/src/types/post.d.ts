@@ -3,7 +3,6 @@ export interface Post {
     title: string;
     description: string;
     authorId?: string;
-
     createdAt: string;
     updatedAt: string;
     deletedAt: string | null;

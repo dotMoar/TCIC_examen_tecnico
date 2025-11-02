@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api:generate": "npx openapi-typescript-codegen --input http://localhost:5001/docs-json --output src/api --client fetch"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.2",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@types/node": "^24.9.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@types/react-redux": "^7.1.34",
@@ -33,6 +35,6 @@
     "globals": "^16.4.0",
     "openapi-typescript-codegen": "^0.29.0",
     "typescript": "^5.9.3",
-    "vite": "^7.1.7"
+    "vite": "^7.1.12"
   }
 }

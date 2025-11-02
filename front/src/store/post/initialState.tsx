@@ -2,8 +2,11 @@ import { Post } from "../../types/post";
 import { ReduxPostStateManage } from "../../types/reduxManage";
 
 export const initialState: ReduxPostStateManage<Post> = {
-    message: "",
-    error: null,
-    loading: false,
-    data: [] as Post[],
+  items: [],
+  loading: false,
+  error: null,
+  total: 0,
+  page: 1,
+  limit: 10,
+  totalPages: 1,
 };
