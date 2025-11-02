@@ -25,28 +25,32 @@ export class PostsService {
         });
     }
     /**
-     * Listar todos los posts activos
+     * Listar posts con búsqueda opcional
      * @param authorId
+     * @param search
      * @param limit
      * @param page
-     * @returns any Lista de posts
+     * @returns any
      * @throws ApiError
      */
     public static postsControllerFindAll(
-        authorId?: string,
-        limit?: number,
-        page?: number,
+        authorId: string,
+        search?: string,
+        limit?: any,
+        page?: any,
     ): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/posts',
             query: {
                 'authorId': authorId,
+                'search': search,
                 'limit': limit,
                 'page': page,
             },
         });
     }
+    
     /**
      * Obtener un post por ID
      * @param id

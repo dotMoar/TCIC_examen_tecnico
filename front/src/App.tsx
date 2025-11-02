@@ -10,21 +10,29 @@ import { Pagination } from "./components/PaginationTable";
 
 function App() {
   const dispatch = useAppDispatch();
-  const { items, loading, error, total, totalPages } = useAppSelector((state) => state.post);
+  const { items, loading, error, totalPages } = useAppSelector((state) => state.post);
 
   const { form, handleChange, resetForm, errors, validate } = useForm({
     name: "",
     description: "",
+    search: "",
   });
 
   const [page, setPage] = useState(1);
   const limit = 10;
 
-  const _handleDelete = (event: React.FormEvent) => {
+  const _handleSearch = (event?: React.FormEvent) => {
+    event?.preventDefault();
+    if (form.search.trim() === "") return;
+    setPage(1);
+
+    dispatch(fetchPosts({ page: 1, limit, search: form.search }));
+  };
+
+  const _handleDelete = async (event: React.FormEvent) => {
     event.preventDefault();
     const target = event.target as HTMLButtonElement;
     const postId = target.id;
-
     dispatch(deletePost(postId));
   };
 
@@ -38,6 +46,13 @@ function App() {
         authorId: "autor123",
       }));
     resetForm();
+  };
+
+  const _handleReset = (event: React.FormEvent) => {
+    event.preventDefault();
+    resetForm();
+    setPage(1);
+    dispatch(fetchPosts({ page: 1, limit }));
   };
 
   useEffect(() => {
@@ -70,14 +85,25 @@ function App() {
             id="default-search"
             className="block w-full p-3 ps-10 text-sm text-[#609966] border border-[#609966] rounded-lg dark:bg-[#EDF1D6] dark:border-gray-600 dark:placeholder-[#609966] focus:ring-[#609966] focus:border-[#609966]"
             placeholder="Buscar..."
+            value={form.search}
+            onChange={handleChange}
+            name="search"
             required
           />
         </div>
         <button
-          type="submit"
+          type="button"
+          onClick={_handleSearch}
           className="text-white bg-[#40513B] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-3"
         >
           Buscar
+        </button>
+        <button
+          type="button"
+          onClick={_handleReset}
+          className="text-white bg-[#40513B] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-3"
+        >
+          Reset
         </button>
       </div>
 
@@ -127,11 +153,19 @@ function App() {
             ))}
           </tbody>
         </table>
-        <Pagination
-          currentPage={page}
-          totalPages={totalPages}
-          onPageChange={setPage}
-        />
+      </div>
+
+      <div className="flex justify-center items-center h-[48px] mt-3">
+        {totalPages! > 1 ? (
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            onPageChange={setPage}
+          />
+        ) : (
+          // 🔹 Esto mantiene el alto aunque no haya paginador
+          <div className="h-[32px]" />
+        )}
       </div>
 
       <div className="flex flex-col sm:flex-row items-start gap-2 w-full max-w-3xl mx-auto mt-4">

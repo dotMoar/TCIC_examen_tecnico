@@ -7,7 +7,8 @@ export const fetchPosts = createAsyncThunk(
   async (params: FetchPostsParams = { page: 1, limit: 10 }, { rejectWithValue }) => {
     try {
       const response = await PostsService.postsControllerFindAll(
-        params.authorId,
+        params.authorId || "",
+        params.search,
         params.limit,
         params.page
       );
