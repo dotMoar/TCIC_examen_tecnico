@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { deletePost, fetchPosts } from "./thunk";
+import { createPost, deletePost, fetchPosts } from "./thunk";
 import { ReduxPostStateManage } from "../../types/reduxManage";
 import { initialState } from "./initialState";
 
@@ -23,15 +23,31 @@ export const postSlice = createSlice({
         state.loading = false;
         state.error = action.payload as string;
       })
-      
-      .addCase(deletePost.pending, (state) => {
-        state.loading = true;
+
+      .addCase(deletePost.pending, (state, action) => {
+        const id = action.meta.arg;
+        const item = state.items.find((p) => p.id === id);
+        if (item) item.loadingDelete = true;
       })
       .addCase(deletePost.fulfilled, (state, action) => {
-        state.loading = false;
-        state.items = state.items.filter((post) => post.id !== action.payload.id);
+        const id = action.payload;
+        state.items = state.items.filter((p) => p.id !== id);
       })
       .addCase(deletePost.rejected, (state, action) => {
+        const id = action.meta.arg;
+        const item = state.items.find((p) => p.id === id);
+        if (item) item.loadingDelete = false;
+        state.error = "Error al eliminar el post"; // TODO: revisar porq no funciona action.payload.message
+      })
+
+      .addCase(createPost.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createPost.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items.unshift(action.payload);
+      })
+      .addCase(createPost.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });

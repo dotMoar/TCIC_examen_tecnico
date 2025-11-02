@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { PostsService } from "../../api";
+import { CreatePostDto, PostsService } from "../../api";
 import { FetchPostsParams } from "../../types/fetchPostPaginateParams";
 
 export const fetchPosts = createAsyncThunk(
@@ -19,14 +19,30 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
-export const deletePost = createAsyncThunk(
+export const deletePost = createAsyncThunk<
+  string,
+  string,
+  { rejectValue: { id: string; message: string } }
+>(
   "posts/delete",
-  async (id: string, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const response = await PostsService.postsControllerRemove(id);
-      return { id, message: response.message };
+      await PostsService.postsControllerRemove(id);
+      return id;
     } catch (error: any) {
-      return rejectWithValue(error.message || "Error al eliminar el post");
+      return rejectWithValue({ id, message: error.message });
+    }
+  }
+);
+
+export const createPost = createAsyncThunk(
+  "posts/create",
+  async (newPost: CreatePostDto, { rejectWithValue }) => {
+    try {
+      const response = await PostsService.postsControllerCreate(newPost);
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.message || "Error al crear el post");
     }
   }
 );

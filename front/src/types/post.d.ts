@@ -7,5 +7,6 @@ export interface Post {
     updatedAt: string;
     deletedAt: string | null;
     isDeleted: boolean;
-    temporary?: boolean;
+    temporary?: boolean; //TODO: hacer recilente
+    loadingDelete?: boolean;
 }
