@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "./hooks/useSelector";
 import { EmptyTable } from "./components/EmptyTable";
 import { Palette } from "./components/Palette";
 import { useEffect, useState } from "react";
-import { fetchPosts } from "./store/post/thunk";
+import { deletePost, fetchPosts } from "./store/post/thunk";
 import { LoadingTable } from "./components/LoadingTable";
 import { Pagination } from "./components/PaginationTable";
 
@@ -25,11 +25,12 @@ function App() {
 
   };
 
-  const deletePost = (event: React.FormEvent) => {
+  const _handleDelete = (event: React.FormEvent) => {
     event.preventDefault();
     const target = event.target as HTMLButtonElement;
     const postId = target.id;
 
+    dispatch(deletePost(postId));
   };
 
   useEffect(() => {
@@ -116,7 +117,7 @@ function App() {
                   <button
                     type="button"
                     id={post.id}
-                    onClick={deletePost}
+                    onClick={_handleDelete}
                     disabled={loading}
                     className={`text-white font-normal rounded-md text-sm px-3 py-1.5 whitespace-nowrap focus:ring-2 focus:outline-none
         								${loading

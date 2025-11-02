@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchPosts } from "./thunk";
+import { deletePost, fetchPosts } from "./thunk";
 import { ReduxPostStateManage } from "../../types/reduxManage";
 import { initialState } from "./initialState";
 
@@ -20,6 +20,18 @@ export const postSlice = createSlice({
         state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchPosts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      
+      .addCase(deletePost.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = state.items.filter((post) => post.id !== action.payload.id);
+      })
+      .addCase(deletePost.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });

@@ -18,3 +18,15 @@ export const fetchPosts = createAsyncThunk(
     }
   }
 );
+
+export const deletePost = createAsyncThunk(
+  "posts/delete",
+  async (id: string, { rejectWithValue }) => {
+    try {
+      const response = await PostsService.postsControllerRemove(id);
+      return { id, message: response.message };
+    } catch (error: any) {
+      return rejectWithValue(error.message || "Error al eliminar el post");
+    }
+  }
+);
