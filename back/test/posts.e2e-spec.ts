@@ -7,6 +7,9 @@ import { Post } from '../src/posts/entities/post.entity';
 
 /* Leer: https://delvingdeveloper.com/posts/end-to-end-testing-nestjs*/
 /* TODO: hacer casos de error con el http interceptor*/
+/* TODO: cambiar magic string por enums*/
+/* TODO: instalar faker para datos de prueba*/
+
 describe('PostsController (e2e)', () => {
   let app: INestApplication;
   let createdPostId: string;
