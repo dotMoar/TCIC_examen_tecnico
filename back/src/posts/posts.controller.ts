@@ -6,8 +6,9 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiQuery } from '@nestjs/swagger';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
@@ -23,12 +24,23 @@ export class PostsController {
   create(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
   }
-
   @Get()
   @ApiOperation({ summary: 'Listar todos los posts activos' })
   @ApiResponse({ status: 200, description: 'Lista de posts' })
-  findAll() {
-    return this.postsService.findAll();
+  @ApiQuery({ name: 'page', required: false, type: Number, example: 1 })
+  @ApiQuery({ name: 'limit', required: false, type: Number, example: 10 })
+  @ApiQuery({
+    name: 'authorId',
+    required: false,
+    type: String,
+    example: 'user-123',
+  })
+  findAll(
+    @Query('page') page = 1,
+    @Query('limit') limit = 10,
+    @Query('authorId') authorId?: string,
+  ) {
+    return this.postsService.findAll(+page, +limit, authorId);
   }
 
   @Get(':id')
