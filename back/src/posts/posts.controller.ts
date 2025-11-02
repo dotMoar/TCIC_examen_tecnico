@@ -24,23 +24,19 @@ export class PostsController {
   create(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
   }
+
   @Get()
-  @ApiOperation({ summary: 'Listar todos los posts activos' })
-  @ApiResponse({ status: 200, description: 'Lista de posts' })
-  @ApiQuery({ name: 'page', required: false, type: Number, example: 1 })
-  @ApiQuery({ name: 'limit', required: false, type: Number, example: 10 })
-  @ApiQuery({
-    name: 'authorId',
-    required: false,
-    type: String,
-    example: 'user-123',
-  })
+  @ApiOperation({ summary: 'Listar posts con búsqueda opcional' })
+  @ApiQuery({ name: 'page', required: false })
+  @ApiQuery({ name: 'limit', required: false })
+  @ApiQuery({ name: 'search', required: false })
   findAll(
     @Query('page') page = 1,
     @Query('limit') limit = 10,
     @Query('authorId') authorId?: string,
+    @Query('search') search?: string,
   ) {
-    return this.postsService.findAll(+page, +limit, authorId);
+    return this.postsService.findAll(page, limit, authorId, search);
   }
 
   @Get(':id')

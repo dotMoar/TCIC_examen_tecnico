@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { Post } from './entities/post.entity';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
@@ -17,9 +17,14 @@ export class PostsService {
     return await this.postRepository.save(post);
   }
 
-  async findAll(page = 1, limit = 10, authorId?: string) {
+  async findAll(page = 1, limit = 10, authorId?: string, search?: string) {
     const where: any = { isDeleted: false };
+
     if (authorId) where.authorId = authorId;
+
+    if (search) {
+      where.title = ILike(`%${search}%`);
+    }
 
     const [data, total] = await this.postRepository.findAndCount({
       where,
