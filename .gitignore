@@ -14,7 +14,10 @@ front/*.local
 
 node_modules
 
-back/dist
+*/dist
+back/.env
+front/.env
+.env
 
 # Editor directories and files
 .vscode/*

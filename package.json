@@ -7,11 +7,10 @@
     "start:front": "npm run dev --prefix front",
     "start:back": "npm run start:dev --prefix back",
     "start:all": "concurrently \"npm run start:back\" \"npm run start:front\"",
-
-		"db:up": "docker compose -f ./DB/docker-compose.yml up -d",
+    "db:up": "docker compose -f ./DB/docker-compose.yml up -d",
     "db:down": "docker compose -f ./DB/docker-compose.yml down",
     "db:logs": "docker compose -f ./DB/docker-compose.yml logs -f",
-		"db:clean": "docker compose -f ./DB/docker-compose.yml down -v --rmi all --remove-orphans",
+    "db:clean": "docker compose -f ./DB/docker-compose.yml down -v --rmi all --remove-orphans",
     "db:rebuild": "npm run db:clean && npm run db:up"
   },
   "devDependencies": {
@@ -21,5 +20,9 @@
     "type": "git",
     "url": "git+https://github.com/dotMoar/TCIC_examen_tecnico.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@nestjs/platform-fastify": "^11.1.8"
+  }
 }
