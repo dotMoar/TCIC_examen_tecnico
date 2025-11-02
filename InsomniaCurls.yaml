@@ -1,0 +1,402 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_1e715c2dda234b7994c40da25e3ff57c
+  created: 1743454284267
+  modified: 1743454284267
+  description: ""
+collection:
+  - name: Nuevo
+    meta:
+      id: fld_cbc22c3004bc40d2937d2c8bfded6c35
+      created: 1750706658099
+      modified: 1762042549649
+      sortKey: -1750706658099
+      description: ""
+    children:
+      - name: Informe
+        meta:
+          id: fld_ea3f546205b9454ab9856cfcced4d3da
+          created: 1738245260431
+          modified: 1762042566995
+          sortKey: -1750706663046.0312
+          description: ""
+        children:
+          - name: Tasacion
+            meta:
+              id: fld_e3c3e449624a4e559ad655834888c060
+              created: 1738247308675
+              modified: 1741273380555
+              sortKey: -1738247308675
+              description: ""
+            scripts:
+              afterResponse: ""
+              preRequest: ""
+          - name: Ventas
+            meta:
+              id: fld_85ea30d0817844688a290ef26b114def
+              created: 1738247332985
+              modified: 1742242881912
+              sortKey: -1738247332985
+              description: ""
+            scripts:
+              afterResponse: ""
+              preRequest: ""
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Market
+        meta:
+          id: fld_34f7a0dec2bd48acba94220e30772e98
+          created: 1739819166027
+          modified: 1762042565746
+          sortKey: -1750706663047.9844
+          description: ""
+        children:
+          - name: Gateway
+            meta:
+              id: fld_27d7c1eba46e403bbfdf62578bf7fb96
+              created: 1740419701782
+              modified: 1740419701782
+              sortKey: -1740419701782
+              description: ""
+            children:
+              - name: Products
+                meta:
+                  id: fld_d246380fc73842c2840ee47b6d6e852c
+                  created: 1740420094214
+                  modified: 1749048343285
+                  sortKey: -1740420094214
+                  description: ""
+                scripts:
+                  afterResponse: ""
+                  preRequest: ""
+              - name: Transactions
+                meta:
+                  id: fld_4dba672a2f0e4ef9a1781eb17276a71e
+                  created: 1742225193862
+                  modified: 1743452429005
+                  sortKey: -1742225193862
+                  description: ""
+                children:
+                  - name: Subs
+                    meta:
+                      id: fld_3ad162aecf9145a8ab355199af64da4a
+                      created: 1749502055241
+                      modified: 1749502055241
+                      sortKey: -1749502055241
+                      description: ""
+                  - name: Cancel
+                    meta:
+                      id: fld_6ce783dd4aba4c8eba5b4801ddaa6f62
+                      created: 1749763895293
+                      modified: 1749763895293
+                      sortKey: -1749502043548.5
+                      description: ""
+                scripts:
+                  afterResponse: ""
+                  preRequest: ""
+              - name: Discounts
+                meta:
+                  id: fld_c839108bfcbf453480f40ecf2ef149d0
+                  created: 1742415392198
+                  modified: 1742415392198
+                  sortKey: -1742415392198
+                  description: ""
+                children:
+                  - name: Subscriptions
+                    meta:
+                      id: fld_cbe512e84be943d7ade3efcea1332176
+                      created: 1749502031856
+                      modified: 1749502031856
+                      sortKey: -1749502031856
+                      description: ""
+                scripts:
+                  afterResponse: ""
+                  preRequest: ""
+              - name: Payments
+                meta:
+                  id: fld_d03e8f29dd8c4de6a4857251c375e6e4
+                  created: 1742499060370
+                  modified: 1743431099161
+                  sortKey: -1742499060370
+                  description: ""
+                scripts:
+                  afterResponse: ""
+                  preRequest: ""
+              - name: Subscription
+                meta:
+                  id: fld_231731d96fbe470a923d4a81b40ff169
+                  created: 1743430874183
+                  modified: 1743430874183
+                  sortKey: -1743430874183
+                  description: ""
+                children:
+                  - name: Ventia
+                    meta:
+                      id: fld_c4c675a07488417c9ce1042c509548a2
+                      created: 1743431693269
+                      modified: 1743431930955
+                      sortKey: -1743431693269
+                      description: ""
+                    children:
+                      - name: Subscription
+                        meta:
+                          id: fld_42ce9dff602e4205901ad23b08f68c94
+                          created: 1743454920359
+                          modified: 1748973341544
+                          sortKey: -1743454920359
+                          description: ""
+                      - name: Nota de venta
+                        meta:
+                          id: fld_129067cb7b65417bbce0b65f613a33e2
+                          created: 1743454995815
+                          modified: 1748973339627
+                          sortKey: -1743454920459
+                          description: ""
+                    scripts:
+                      afterResponse: ""
+                      preRequest: ""
+                scripts:
+                  afterResponse: ""
+                  preRequest: ""
+              - name: Card
+                meta:
+                  id: fld_4048d393d33e48c4ae30a174631f5ae2
+                  created: 1746646851160
+                  modified: 1748973337981
+                  sortKey: -1746646851160
+                  description: ""
+            scripts:
+              afterResponse: ""
+              preRequest: ""
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: SSO
+        meta:
+          id: fld_1013e8e7c1c14244ac666373dcb55c19
+          created: 1747165658888
+          modified: 1762042557799
+          sortKey: -1750706663048.375
+          description: ""
+  - name: TCIT
+    meta:
+      id: fld_6398bdcc260d45a1970607a39f37a214
+      created: 1762042593334
+      modified: 1762042593334
+      sortKey: -1762042593334
+      description: ""
+    children:
+      - url: http://localhost:5001/api/posts
+        name: Create Transaction
+        meta:
+          id: req_fa04014e1f3b450fa274138e62a3e414
+          created: 1762042612507
+          modified: 1762110025537
+          isPrivate: false
+          description: ""
+          sortKey: -1762109876687
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"title": "{% faker 'music', '', '', '', '', '', '', '', '', '', '', 'noun', '', '', '', '', 'songName', '', '', '', '', '', '', '', '', 'en' %}",
+            	"description": "{% faker 'lorem', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'sentence', '', '', '', '', '', '', '', '', '', 'en' %}",
+            	"authorId": "{% faker 'internet', '', '', '', '', '', '', '', '', '', '', '', '', 'userName', '', '', '', '', '', '', '', '', '', '', '', 'en' %}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:5001/api/posts?limit=10&page=1
+        name: Get All
+        meta:
+          id: req_9d7436e11af14a4aa6cce39439714059
+          created: 1762043915199
+          modified: 1762102321685
+          isPrivate: false
+          description: ""
+          sortKey: -1762042615016
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:5001/api/posts
+        name: Filtrado por author
+        meta:
+          id: req_5dd1091a192448f3baf57d82a77eaf55
+          created: 1762044484354
+          modified: 1762107414226
+          isPrivate: false
+          description: ""
+          sortKey: -1762042614966
+        method: GET
+        parameters:
+          - name: authorId
+            value: Bye
+            disabled: false
+            id: pair_bae5598c72194df597310af8c34f912b
+          - name: page
+            value: "1"
+            disabled: false
+            id: pair_231ee43c5824431da2d3a5e9c074cce3
+          - name: limit
+            value: "5"
+            disabled: false
+            id: pair_a5c7e89c650f4becba14f5bd093ef2b9
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:5001/api/posts/c7b4ddeb-5033-4687-9b96-89ef7c0670de
+        name: Delete
+        meta:
+          id: req_008d07c38fce4b999b56dff49178e300
+          created: 1762109876587
+          modified: 1762110028028
+          isPrivate: false
+          description: ""
+          sortKey: -1762042614866
+        method: DELETE
+        headers:
+          - name: Accept-Language
+            value: es-419,es;q=0.9
+            id: pair_3e64e5c887274ede9c3446f8511e0d5a
+          - name: Cache-Control
+            value: no-cache
+            id: pair_fd3f811277cd49f694728a2f8de8953c
+          - name: accept
+            value: application/json
+            id: pair_8fea56fd8a49430893b46e09396f2dce
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:5001/api/posts
+        name: Filtrado por Titulo
+        meta:
+          id: req_157ec51158e74335a67c96ee49a042a2
+          created: 1762110009578
+          modified: 1762110023090
+          isPrivate: false
+          description: ""
+          sortKey: -1762042614991
+        method: GET
+        parameters:
+          - name: authorId
+            value: ""
+            disabled: false
+          - name: limit
+            value: "10"
+            disabled: false
+          - name: page
+            value: "1"
+            disabled: false
+        headers:
+          - name: Cache-Control
+            value: no-cache
+          - name: Pragma
+            value: no-cache
+          - name: Sec-Fetch-Dest
+            value: empty
+          - name: accept
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_d25ff24745fe4db8a48a6fb7af13716b
+    created: 1737483471657
+    modified: 1747236514356
+  cookies:
+    - key: connect.sid
+      value: s%3A46SNcuPnibRoz4Q-Xwy0hJt5jI-GlDN3.oxEln%2BCFRhMR%2FDsWNhFawCs5AkSsUEzYzTQ4OFKFJuE
+      domain: sso.qatoctoc.com
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-13T19:57:59.988Z
+      lastAccessed: 2025-05-13T19:57:59.988Z
+      id: 8e074ddc-9549-4937-b900-6e45267a5f1e
+    - key: connect.sid
+      value: s%3ApNrxQZ3qU3GM2NWK_7BWoIPheYhdNJRP.3j0Oblak%2F4g7eMLm1GHHwwzPVt7A6ftxIyWKa0HmXuQ
+      domain: localhost
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-13T20:09:06.576Z
+      lastAccessed: 2025-05-14T15:18:45.570Z
+      id: 16948718-66af-42dc-ad7e-828f507cd3ee
+    - key: X-DATA
+      value: 735b6f09-50d6-4150-ba0f-6b47d3d0a25d
+      domain: www.toctoc.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-14T15:28:34.355Z
+      lastAccessed: 2025-05-14T15:28:34.355Z
+      id: f05c9c76-9df0-4e79-8faf-841d9ff60586
+    - key: X-DATA-NPSW
+      value: '{"CantidadVisitas":1,"FechaCreacion":"2025-05-14T11:28:34.0174169-04:00","FechaUltimoIngreso":"2025-05-14T11:28:34.0174169-04:00","Detalles":[{"TipoVistaNPS":10,"Cantidad":1,"FechaUltimoIngreso":"2025-05-14T11:28:34.0174169-04:00"}]}'
+      domain: www.toctoc.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-14T15:28:34.356Z
+      lastAccessed: 2025-05-14T15:28:34.356Z
+      id: 101ef4cb-de9e-4eaf-ba07-ede18087d7d4
+environments:
+  name: Base Environment
+  meta:
+    id: env_9261d840cf1541c0b1220d2a0bca146e
+    created: 1737483471547
+    modified: 1753885699156
+    isPrivate: false
+  data:
+    idTx: "{% response 'body', 'req_a163cce89d9e4026b4c94c3834172d62',
+      'b64::JC5kYXRhLl9pZA==::46b', 'never', 60 %}"
+    cardSusses: "{% response 'body', 'req_a163cce89d9e4026b4c94c3834172d62',
+      'b64::JC5kYXRhLmNhcmRzWz8oQC5sYXN0ND09IjAwMDIiKV0uaWQ=::46b', 'never', 60
+      %}"
+    cardDeclined: "{% response 'body', 'req_a163cce89d9e4026b4c94c3834172d62',
+      'b64::JC5kYXRhLmNhcmRzWz8oQC5sYXN0ND09IjAwMDIiKV0uaWQ=::46b', 'never', 60
+      %}"
+    cardExceded: "{% response 'body', 'req_a163cce89d9e4026b4c94c3834172d62',
+      'b64::JC5kYXRhLmNhcmRzWz8oQC5sYXN0ND09IjAwMDIiKV0uaWQ=::46b', 'never', 60
+      %}"
+    cardExpired: "{% response 'body', 'req_a163cce89d9e4026b4c94c3834172d62',
+      'b64::JC5kYXRhLmNhcmRzWz8oQC5sYXN0ND09IjAwNjkiKV0uaWQ=::46b', 'never', 60
+      %}"
+    urlBase: http://localhost:3000/marketplace/1.0/gw
+    urlBaseQA: https://api.qatoctoc.com/marketplace/1.0/gw

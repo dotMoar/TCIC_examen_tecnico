@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start:prod": "vite preview --port 4173",
     "lint": "eslint .",
-    "preview": "vite preview",
     "api:generate": "npx openapi-typescript-codegen --input http://localhost:5001/docs-json --output src/api --client fetch"
   },
   "dependencies": {

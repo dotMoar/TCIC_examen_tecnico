@@ -1,28 +1,23 @@
 {
   "name": "tcit_examen_tecnico",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "workspaces": [
+    "back",
+    "front",
+    "DB"
+  ],
   "scripts": {
-    "start:front": "npm run dev --prefix front",
-    "start:back": "npm run start:dev --prefix back",
-    "start:all": "concurrently \"npm run start:back\" \"npm run start:front\"",
+    "dev": "concurrently \"npm run start:dev --workspace back\" \"npm run dev --workspace front\"",
+    "preview:front": "npm run start:prod --workspace front",
     "db:up": "docker compose -f ./DB/docker-compose.yml up -d",
     "db:down": "docker compose -f ./DB/docker-compose.yml down",
     "db:logs": "docker compose -f ./DB/docker-compose.yml logs -f",
     "db:clean": "docker compose -f ./DB/docker-compose.yml down -v --rmi all --remove-orphans",
-    "db:rebuild": "npm run db:clean && npm run db:up"
+    "db:rebuild": "npm run db:clean && npm run db:up",
+    "api:generate": "npm run api:generate --workspace front"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dotMoar/TCIC_examen_tecnico.git"
-  },
-  "license": "ISC",
-  "dependencies": {
-    "@fastify/cors": "^11.1.0",
-    "@nestjs/platform-fastify": "^11.1.8"
   }
 }
