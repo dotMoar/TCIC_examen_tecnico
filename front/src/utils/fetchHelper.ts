@@ -1,4 +1,4 @@
-import { ApiResponse } from "../types/apiResponse";
+import { ApiResponse } from "@/types/apiResponse";
 import { HttpMethod } from "./enums/httpMethods";
 
 const BASE_URL = "http://localhost:3000";

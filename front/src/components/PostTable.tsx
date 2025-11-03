@@ -2,7 +2,7 @@ import React from "react";
 import { PostRow } from "./PostRow";
 import { LoadingTable } from "./LoadingTable";
 import { EmptyTable } from "./EmptyTable";
-import { Post } from "../types/post";
+import { Post } from "../types/Post";
 
 export const PostTable: React.FC<PostTableProps> = ({
   items,

@@ -1,4 +1,4 @@
-import { Post } from "../../types/post";
+import { Post } from "../../types/Post";
 import { ReduxPostStateManage } from "../../types/reduxManage";
 
 export const initialState: ReduxPostStateManage<Post> = {
