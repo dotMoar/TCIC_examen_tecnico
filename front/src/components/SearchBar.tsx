@@ -1,5 +1,3 @@
-import { SearchBarProps } from "../types/components/searchBar";
-
 export const SearchBar: React.FC<SearchBarProps> = ({
   value,
   onChange,

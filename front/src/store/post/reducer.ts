@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createPost, deletePost, fetchPosts } from "./thunk";
-import { ReduxPostStateManage } from "../../types/reduxManage";
 import { initialState } from "./initialState";
 
 export const postSlice = createSlice({
@@ -15,7 +14,7 @@ export const postSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action: PayloadAction<any>) => {
         state.loading = false;
-        state.items = action.payload.data; // 👈 los posts
+        state.items = action.payload.data;
         state.total = action.payload.total;
         state.totalPages = action.payload.totalPages;
       })

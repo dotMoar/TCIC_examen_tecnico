@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from "react";
 
+//Nota: Este hook fue tomado de TocToc hecho por mi y a la vez tomado de un proyecto de Fernando Herrera, perdi la url, lo siento
 export const useForm = <T extends Record<string, any>>(initialState: T) => {
   const [form, setForm] = useState<T>(initialState);
   const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
@@ -27,8 +28,9 @@ export const useForm = <T extends Record<string, any>>(initialState: T) => {
 
   const validate = () => {
     const newErrors: Partial<Record<keyof T, string>> = {};
+    const fieldsToValidate = ["name", "description"] as (keyof T)[];
 
-    for (const key in form) {
+    for (const key of fieldsToValidate) {
       const value = form[key];
       if (!value || value.trim() === "") {
         newErrors[key] = "Este campo es obligatorio";

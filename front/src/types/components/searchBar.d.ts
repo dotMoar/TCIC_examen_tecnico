@@ -1,4 +1,4 @@
-export interface SearchBarProps {
+interface SearchBarProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSearch: (e: React.FormEvent) => void;
