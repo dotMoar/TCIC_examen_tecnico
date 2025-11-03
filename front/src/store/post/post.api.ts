@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { CreatePostDto, PostsService } from "../../api";
-import { FetchPostsParams } from "../../types/fetchPostPaginateParams";
+import { FetchPostsParams } from "@/types/fetchPostPaginateParams";
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchAll",

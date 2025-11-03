@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createPost, deletePost, fetchPosts } from "./thunk";
+import { createPost, deletePost, fetchPosts } from "./post.api";
 import { initialState } from "./initialState";
 
 export const postSlice = createSlice({
