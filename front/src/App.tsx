@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { createPost, deletePost, fetchPosts } from "./store/post/thunk";
 import { LoadingTable } from "./components/LoadingTable";
 import { Pagination } from "./components/PaginationTable";
+import { SearchBar } from "./components/SearchBar";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -55,57 +56,26 @@ function App() {
     dispatch(fetchPosts({ page: 1, limit }));
   };
 
+  const _handleEnter = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      dispatch(fetchPosts({ page: 1, limit, search: form.search }));
+    }
+  }
+
   useEffect(() => {
     dispatch(fetchPosts({ page, limit }));
   }, [dispatch, page]);
 
   return (
     <>
-      <div className="flex items-center gap-2 mb-6 w-full max-w-3xl mx-auto">
-        <div className="relative flex-grow">
-          <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            className="block w-full p-3 ps-10 text-sm text-[#609966] border border-[#609966] rounded-lg dark:bg-[#EDF1D6] dark:border-gray-600 dark:placeholder-[#609966] focus:ring-[#609966] focus:border-[#609966]"
-            placeholder="Buscar..."
-            value={form.search}
-            onChange={handleChange}
-            name="search"
-            required
-          />
-        </div>
-        <button
-          type="button"
-          onClick={_handleSearch}
-          className="text-white bg-[#40513B] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-3"
-        >
-          Buscar
-        </button>
-        <button
-          type="button"
-          onClick={_handleReset}
-          className="text-white bg-[#40513B] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-3"
-        >
-          Reset
-        </button>
-      </div>
+      <SearchBar
+        value={form.search}
+        onChange={handleChange}
+        onSearch={_handleSearch}
+        onReset={_handleReset}
+        onEnter={_handleEnter}
+      />
 
       <div className=" mx-auto overflow-x-auto shadow-md sm:rounded-lg">
         <table className="min-w-full text-sm text-left text-[#EDF1D6] dark:text-[#EDF1D6] table-fixed">
@@ -126,7 +96,7 @@ function App() {
                   ? "bg-[#FEE2E2] text-[#B91C1C]"
                   : "bg-white dark:bg-[#EDF1D6] text-gray-900 dark:text-[#40513B]"
                   }`}
-                style={{ height: "56px" }} // 🔹 fija la altura mínima de la fila
+                style={{ height: "56px" }}
               >
                 <th
                   scope="row"
@@ -163,7 +133,6 @@ function App() {
             onPageChange={setPage}
           />
         ) : (
-          // 🔹 Esto mantiene el alto aunque no haya paginador
           <div className="h-[32px]" />
         )}
       </div>
